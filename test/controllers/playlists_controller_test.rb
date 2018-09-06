@@ -2,37 +2,38 @@ require 'test_helper'
 
 class PlaylistsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @playlist = playlists(:one)
+    @playlist1 = playlists(:one)
+    @playlist2 = playlists(:two)
   end
 
-  test "should get index" do
-    get playlists_url, as: :json
+  test 'shows playlist if owner' do
+    get playlist_url(@playlist1, user_id: 1), as: :json
     assert_response :success
   end
 
-  test "should create playlist" do
-    assert_difference('Playlist.count') do
-      post playlists_url, params: { playlist: { id: @playlist.id, owner_id: @playlist.owner_id, shared_with: @playlist.shared_with, song_ids: @playlist.song_ids } }, as: :json
-    end
-
-    assert_response 201
-  end
-
-  test "should show playlist" do
-    get playlist_url(@playlist), as: :json
+  test 'shows playlist if shared' do
+    get playlist_url(@playlist1, user_id: 2), as: :json
     assert_response :success
   end
 
-  test "should update playlist" do
-    patch playlist_url(@playlist), params: { playlist: { id: @playlist.id, owner_id: @playlist.owner_id, shared_with: @playlist.shared_with, song_ids: @playlist.song_ids } }, as: :json
-    assert_response 200
+  test 'does not show playlist if not owner and not shared' do
+    get playlist_url(@playlist2, user_id: 1), as: :json
+    assert_response :unauthorized
   end
 
-  test "should destroy playlist" do
-    assert_difference('Playlist.count', -1) do
-      delete playlist_url(@playlist), as: :json
-    end
+  test 'shares playlist if owner' do
 
-    assert_response 204
+  end
+
+  test 'does not share playlist if not owner' do
+
+  end
+
+  test 'unshares playlist if owner' do
+
+  end
+
+  test 'does not share playlist if not owner' do
+
   end
 end

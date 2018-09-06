@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class PlaylistTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'songs method works when some songs do not exist' do
+
+  end
 end

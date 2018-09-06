@@ -1,11 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: MyString
-  artist: MyString
-  title: MyString
+  id: '1'
+  artist: 'Test'
+  title: 'Test1'
 
 two:
-  id: MyString
-  artist: MyString
-  title: MyString
+  id: '2'
+  artist: 'Test'
+  title: 'Test2'
+
+three:
+  id: '3'
+  artist: 'Test'
+  title: 'Test3'
+
+four:
+  id: '4'
+  artist: 'Test'
+  title: 'Test4'
