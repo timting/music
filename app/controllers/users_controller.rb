@@ -1,44 +1,21 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :stringify_ids
+  before_action :set_user, only: [:playlists]
+  before_action :authorize
 
-  # GET /users
-  def index
-    @users = User.all
-
-    render json: @users
-  end
-
-  # GET /users/1
-  def show
-    render json: @user
-  end
-
-  # POST /users
-  def create
-    @user = User.new(user_params)
-
-    if @user.save
-      render json: @user, status: :created, location: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /users/1
-  def update
-    if @user.update(user_params)
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /users/1
-  def destroy
-    @user.destroy
+  def playlists
+    render json: (@user.my_playlists + @user.playlists_shared_with_me).to_json(methods: :songs)
   end
 
   private
+    def authorize
+      if params[:user_id] != params[:id]
+        render status: :unauthorized, json: {
+          message: "You are unauthorized to perform this action"
+        }
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -46,6 +23,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:id, :name)
+      params.require(:user).permit(:id, :name, :user_id)
     end
 end

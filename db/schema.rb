@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2018_09_04_000202) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "playlists", force: :cascade do |t|
     t.string "owner_id"
-    t.string "song_ids"
-    t.string "shared_with"
+    t.string "song_ids", default: [], array: true
+    t.string "shared_with", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
