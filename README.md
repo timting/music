@@ -1,38 +1,32 @@
-As a user I want to be able to share a playlist with another user
-As a user I want to be able to unshare a playlist with another user
-As a user I want to be able to view a playlist I created
-As a user I want to be able to view a playlist shared with me
-As a user I want to be able to view all my playlists
+This is a toy project demonstrating some API design.
+
+## Requirements
+- As a user I want to be able to share a playlist with another user
+- As a user I want to be able to unshare a playlist with another user
+- As a user I want to be able to view a playlist I created
+- As a user I want to be able to view a playlist shared with me
+- As a user I want to be able to view all my playlists
 
 Edge cases:
-As a user, I cannot share a playlist I did not create
-As a user, I cannot unshare a playlist I did not create
-As a user, I cannot view a playlist which I did not create and which was not shared with me
-As a user, I want to be able to see a playlist with all its songs with one network call
-Songs that no longer exist do not get added to a playlist when it is requested
+- As a user, I cannot share a playlist I did not create
+- As a user, I cannot unshare a playlist I did not create
+- As a user, I cannot view a playlist which I did not create and which was not shared with me
+- As a user, I want to be able to see a playlist with all its songs with one network call
+- Songs that no longer exist do not get added to a playlist when it is requested
 
+## Deployment
+This code is currently deployed at `https://mysterious-basin-78669.herokuapp.com`.
 
-# README
+## Seeding
+The code to seed the database (currently Postgresql) can be run using `rails db:seed`.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Automated Testing
+If you can get everything setup locally ;), you can run `rails t` to run tests. The tests focus on testing the requirements above.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Manual Testing
+Some curl command you can use to test the functionality are below:
+Sharing: `curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "user_id=2" https://mysterious-basin-78669.herokuapp.com/playlists/1/share/1`
+Unsharing: `curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "user_id=2" https://mysterious-basin-78669.herokuapp.com/playlists/1/unshare/1`
+Viewing a playlist: `curl https://mysterious-basin-78669.herokuapp.com/playlists/1?user_id=2`
+Viewing a user's playlists: `curl https://mysterious-basin-78669.herokuapp.com/users/2/playlists?user_id=2`
+Viewing songs: `curl https://mysterious-basin-78669.herokuapp.com/songs`
