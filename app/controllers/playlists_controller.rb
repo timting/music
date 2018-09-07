@@ -5,7 +5,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists/1
   def show
     if @playlist.can_be_viewed_by?(params[:user_id])
-      render json: @playlist.to_json(methods: :songs)
+      render json: @playlist
     else
       render status: :unauthorized, json: {
         message: "You are not authorized to view this playlist"

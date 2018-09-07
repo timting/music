@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
-  owner_id: 1
+  id: '1'
+  owner_id: '1'
   song_ids: ['3', '4']
   shared_with: ['2']
 

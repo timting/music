@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   # For now, keep the resource with no actions, since later on we will definitely need them
   resources :playlists, only: [:show] do
     member do
-      post 'unshare/:unshare_to_id', to: 'playlists#unshare'
-      post 'share/:share_to_id', to: 'playlists#share'
+      post 'unshare/:unshare_to_id', to: 'playlists#unshare', as: 'playlists_unshare'
+      post 'share/:share_to_id', to: 'playlists#share', as: 'playlists_share'
     end
   end
 

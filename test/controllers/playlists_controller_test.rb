@@ -22,18 +22,22 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'shares playlist if owner' do
-
+    post playlists_share_playlist_url(@playlist1, 2), params: {user_id: 1}, as: :json
+    assert_response :success
   end
 
   test 'does not share playlist if not owner' do
-
+    post playlists_share_playlist_url(@playlist1, 2), params: {user_id: 2}, as: :json
+    assert_response :unauthorized
   end
 
   test 'unshares playlist if owner' do
-
+    post playlists_unshare_playlist_url(@playlist1, 2), params: {user_id: 1}, as: :json
+    assert_response :success
   end
 
-  test 'does not share playlist if not owner' do
-
+  test 'does not unshare playlist if not owner' do
+    post playlists_unshare_playlist_url(@playlist1, 2), params: {user_id: 2}, as: :json
+    assert_response :unauthorized
   end
 end
