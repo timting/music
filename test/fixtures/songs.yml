@@ -14,8 +14,3 @@ three:
   id: '3'
   artist: 'Test'
   title: 'Test3'
-
-four:
-  id: '4'
-  artist: 'Test'
-  title: 'Test4'
