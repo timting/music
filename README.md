@@ -28,9 +28,9 @@ If you can get everything setup locally ;), you can run `rails t` to run tests. 
 
 ## Manual Testing
 Some curl command you can use to test the functionality are below:
-Sharing: `curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "user_id=2" https://mysterious-basin-78669.herokuapp.com/playlists/1/share/1`
-Unsharing: `curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "user_id=2" https://mysterious-basin-78669.herokuapp.com/playlists/1/unshare/1`
-Viewing a playlist: `curl https://mysterious-basin-78669.herokuapp.com/playlists/1?user_id=2`
-Viewing a user's playlists: `curl https://mysterious-basin-78669.herokuapp.com/users/2/playlists?user_id=2`
-Viewing songs: `curl https://mysterious-basin-78669.herokuapp.com/songs`
-Healthcheck: `https://mysterious-basin-78669.herokuapp.com/health`
+- Sharing: `curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "user_id=2" https://mysterious-basin-78669.herokuapp.com/playlists/1/share/1`
+- Unsharing: `curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "user_id=2" https://mysterious-basin-78669.herokuapp.com/playlists/1/unshare/1`
+- Viewing a playlist: `curl https://mysterious-basin-78669.herokuapp.com/playlists/1?user_id=2`
+- Viewing a user's playlists: `curl https://mysterious-basin-78669.herokuapp.com/users/2/playlists?user_id=2`
+- Viewing songs: `curl https://mysterious-basin-78669.herokuapp.com/songs`
+- Healthcheck: `https://mysterious-basin-78669.herokuapp.com/health`
